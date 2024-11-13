@@ -15,12 +15,14 @@ Python-dotenv - Loads environment variables from a .env file.
 
 Run in command line:
 1: cd MAINFOLDER/app
+
 2:uvicorn main:app --reload
+
 3: access localhost
 
 
 Note: MongoDB should be set up to run file
-Once file is successfully uploaded, it will be saved to mongodb database and collection, then page will redirect to aggregation page displaying table of all uploaded information.
+Once file is successfully uploaded, it will be saved to mongodb database and collection, then page will redirect to aggregation page displaying table of all uploaded information with pagination.
 If file is not successfully uploaded or if mongodb content is removed, no info will display on the webpage table.
 
 ![upload](https://github.com/user-attachments/assets/fc68599f-8eab-404e-9669-5376e7f3b43b)
