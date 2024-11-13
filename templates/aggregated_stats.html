@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aggregated Stats</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9fafb;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-radius: 8px;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        table th,
+        table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        table th {
+            background-color: #23263b;
+            color: white;
+            font-size: 14px;
+        }
+
+        table tr:hover {
+            background-color: #dadbe4;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .pagination a {
+            background-color: #36395a;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 10px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination a:hover {
+            background-color: #484c7a;
+        }
+
+        .pagination p {
+            font-size: 16px;
+            color: #4a5568;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            min-width: 900px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Aggregated Stats</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Medal Date</th>
+                    <th>Medal Type</th>
+                    <th>Medal Code</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Country Code</th>
+                    <th>Country</th>
+                    <th>Country Long</th>
+                    <th>Nationality</th>
+                    <th>Team</th>
+                    <th>Team Gender</th>
+                    <th>Discipline</th>
+                    <th>Event</th>
+                    <th>Event Type</th>
+                    <th>URL Event</th>
+                    <th>Birth Date</th>
+                    <th>Athlete Code</th>
+                    <th>Team Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in data %}
+                <tr>
+                    <td>{{ item.medal_date }}</td>
+                    <td>{{ item.medal_type }}</td>
+                    <td>{{ item.medal_code }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.gender }}</td>
+                    <td>{{ item.country_code }}</td>
+                    <td>{{ item.country }}</td>
+                    <td>{{ item.country_long }}</td>
+                    <td>{{ item.nationality }}</td>
+                    <td>{{ item.team }}</td>
+                    <td>{{ item.team_gender }}</td>
+                    <td>{{ item.discipline }}</td>
+                    <td>{{ item.event }}</td>
+                    <td>{{ item.event_type }}</td>
+                    
+                    <td>{{ item.birth_date }}</td>
+                    <td>{{ item.code_athlete }}</td>
+                    <td>{{ item.code_team }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination">
+        <p>Page {{ pagination.current_page }} of {{ pagination.total_pages }}</p>
+
+        {% if pagination.previous_page %}
+        <a href="{{ pagination.previous_page }}">Previous</a>
+        {% endif %}
+        {% if pagination.next_page %}
+        <a href="{{ pagination.next_page }}">Next</a>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>
